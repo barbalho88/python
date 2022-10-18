@@ -19,3 +19,17 @@ hi = hypot(co, ca)
 
 # print("A hipotenusa dos números %.1f e %.1f é: %.1f!" % (co, ca, hipotenusa))
 print("A hi dos números {} e {} é {:.2f}.".format(co, ca, hi))
+
+# Desafio 18: Faça um programa que leia um ângulo qualquer e mostre na tela o valor do seno, cosseno e tangente desse ângulo.
+
+import math
+
+ang=float(input('Informe um ângulo que informe na tela o Seno, Cosseno e Tangente dele: '))
+
+seno=math.sin(ang)
+
+cosseno=math.cos(ang)
+
+tangente=math.tan(ang)
+
+print('o valor de ângulo é {}\nO seno {:.2f}\nO  cosseno é {:.2f}\nTangente será {:.2f}'.format(ang, seno, cosseno, tangente))
