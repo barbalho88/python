@@ -49,3 +49,16 @@ escolhido=random.choice(lista)
 
 print('O Aluno sorteado é: {}'. format(escolhido))
 
+# O mesmo professor do desafio anterior quer sortear a ordem de apresentação de trabalhos dos alunos.
+# Faça um programa que leia o nome dos quatro alunos e mostre a ordem sorteada.
+import random
+
+n1=str(input('1° aluno: '))
+n2=str(input('2° aluno: '))
+n3=str(input('3° aluno: '))
+
+lista=[n1, n2, n3]
+
+random.shuffle(lista)
+
+print('A sequência dos alunos será: {} '. format(lista))
