@@ -62,3 +62,28 @@ lista=[n1, n2, n3]
 random.shuffle(lista)
 
 print('A sequência dos alunos será: {} '. format(lista))
+
+
+Manipulando textos
+
+#len(frase) comprimento da frase
+#frase.count('o') contar quantos 'o' tem na frase
+#frase.count('o',0,13) contar quantos 'o' entre 0 a 13
+#frase.find('deo') a posição do deo
+#frase.find('Android') str n existe informa -1
+#'Curso' in frase #vai informar se tem Curso na frase
+#frase.replace('Python','Android') trocar a palavra
+#frase.upper() tudo em maiusculo
+#frase.lower() tudo em minusculo
+#frase.capitalize() so a primeira letra maiusculo da frase inteira
+#frase.title() so a primeira letra maiuscula
+#frase.strip() remover espaços inuteis
+#frase.rstrip() remove espaço a direita
+#frase.lstrip() remove espaços a esquerda
+#frase.split() dividi as strings
+#'-'.join(frase) junta as strings
+#3 aspas str o texto todo
+
+frase='Curso em Video Python'
+print(frase.count('o'))
+
