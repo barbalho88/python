@@ -104,3 +104,7 @@ print('Seu nome completo em maiúsculo: {}'. format(nome_p))
 print('Seu nome completo em minúsculo: {}'. format(nome_g))
 print('Seu nome tem {} letras'.format(len(nome)))
 print('Seu primeiro nome tem {} letras'.format(nome.find(' ')))
+
+#faça um programa que leia um número de 0 a 9999 e mostre na tela cada um dos digítos separados
+#ex: digite um número: 9876
+#milhar 9 centena 8 dezena 7 unidade 6
