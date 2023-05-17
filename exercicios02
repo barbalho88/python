@@ -92,18 +92,20 @@ print(frase.count('o'))
 #quntas letras ao todo(sem espaços)
 #quantas letras tem o primeiro nome.
 
-nome=input('Escreva seu nome completo: ').strip()
+nome = str(input("Digite seu nome: ")).strip()
+
+nome_ma = nome.upper()
+nome_mi = nome.lower()
+pn = nome.split()[0]
+qpn = len(pn)
+nse = len(nome) - nome.count(" ")
 
 
-nome_p=nome.upper()
-nome_g=nome.lower()
+print("Seu nome maiúsculo: {}".format(nome_ma))
+print("Seu nome minúsculo: {}".format(nome_mi))
+print("Seu Primeiro nome tem {} letras.".format(qpn))
+print("Seu nome sem espaços: {}".format(nse))
 
-
-
-print('Seu nome completo em maiúsculo: {}'. format(nome_p))
-print('Seu nome completo em minúsculo: {}'. format(nome_g))
-print('Seu nome tem {} letras'.format(len(nome)))
-print('Seu primeiro nome tem {} letras'.format(nome.find(' ')))
 
 #faça um programa que leia um número de 0 a 9999 e mostre na tela cada um dos digítos separados
 #ex: digite um número: 9876
@@ -125,8 +127,16 @@ d = num // 10 % 10
 c = num // 100 % 10
 m = num // 1000 % 10
 
+#Da mesma Forma em str:
+
 print("Unidade: {}".format(u))
 print("Dezena: {}".format(d))
 print("Centena: {}".format(c))
 print("Milhar: {}".format(m))
 
+num = int(input("Informe um numero: "))
+n = str(num)
+print("Unidade: {}".format(n[3]))
+print("Dezena: {}".format(n[2]))
+print("Centena: {}".format(n[1]))
+print("Milhar: {}".format(n[0]))
