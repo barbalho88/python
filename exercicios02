@@ -140,3 +140,26 @@ print("Unidade: {}".format(n[3]))
 print("Dezena: {}".format(n[2]))
 print("Centena: {}".format(n[1]))
 print("Milhar: {}".format(n[0]))
+
+
+# Exercício Python 24: Crie um programa que leia o nome de uma cidade diga se ela começa ou não com o nome “SANTO”.
+
+cidade = str(input("Digite o nome da sua cidade ")).strip()
+print(cidade[:5].upper() == 'SANTO')
+
+# Exercício Python 25: Crie um programa que leia o nome de uma pessoa e diga se ela tem “SILVA” no nome.
+
+nome = str(input('Digite o nome da cidade: ')).strip()
+print("Tem Silva no nome? {}".format('SILVA' in nome.upper()))
+
+# Exercício Python 26: Faça um programa que leia uma frase pelo teclado e mostre quantas vezes aparece a letra “A”, em que posição ela aparece a primeira vez e em que posição ela aparece a última vez.
+
+frase = str(input("Digite uma Frase ")).strip()
+
+qa = frase.upper().count('A')
+pp = frase.upper().find('A')+1
+up = frase.upper().rfind('A')+1
+
+print("A quantidade da letra A na frase é {}".format(qa))
+print("A posição da primeira letra A na frase é {}".format(pp))
+print("A Ultima posição da primeira letra A na frase é {}".format(up))
