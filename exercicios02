@@ -152,7 +152,8 @@ print(cidade[:5].upper() == 'SANTO')
 nome = str(input('Digite o nome da cidade: ')).strip()
 print("Tem Silva no nome? {}".format('SILVA' in nome.upper()))
 
-# Exercício Python 26: Faça um programa que leia uma frase pelo teclado e mostre quantas vezes aparece a letra “A”, em que posição ela aparece a primeira vez e em que posição ela aparece a última vez.
+# Exercício Python 26: Faça um programa que leia uma frase pelo teclado e mostre quantas vezes aparece a letra “A”
+em que posição ela aparece a primeira vez e em que posição ela aparece a última vez.
 
 frase = str(input("Digite uma Frase ")).strip()
 
@@ -175,3 +176,121 @@ un = nf[len(nf)-1]
 print ("Seu Primeiro nome é {}".format(pn))
 print ("Seu último nome é {}".format(un))
 
+Exercício Python 28: Escreva um programa que faça o computador “pensar” em um número inteiro entre 0 e 5 e peça para o
+usuário tentar descobrir qual foi o número escolhido pelo computador. O programa deverá escrever na tela se o usuário
+venceu ou perdeu.
+
+import random
+
+print("-=-"*30)
+
+print("Tente Adivinhar o número que estou pensando entre 0 a 5...")
+
+print("-=-"*30)
+
+print("Em qual número eu pensei?")
+
+print("-=-"*30)
+
+nu = int(input("Digite algum número "))
+na = random.randint(0, 5)
+
+print("Pensei no número {}".format(na))
+print("-=-"*30)
+
+if nu == na:
+    print("Parabéns você adivinhou o número que eu pensei ")
+
+else:
+    print("Que pensa, o número que eu pensei foi diferente do seu ")
+print("Fim")
+
+Exercício Python 29: Escreva um programa que leia a velocidade de um carro.
+Se ele ultrapassar 80Km/h, mostre uma mensagem dizendo que
+ele foi multado. A multa vai custar R$7,00 por cada Km acima do limite.
+
+velocidade = float(input("Digite a velocidade do carro em Km/h: "))
+
+limite_velocidade = 80
+multa_por_km = 7.00
+
+if velocidade > limite_velocidade:
+    velocidade_excedida = velocidade - limite_velocidade
+    valor_multa = velocidade_excedida * multa_por_km
+    mensagem = f"Você foi multado!\nVelocidade excedida: {velocidade_excedida} Km/h\nValor da multa: R${valor_multa:.2f}"
+else:
+    mensagem = "Você está dentro do limite de velocidade. Dirija com segurança!"
+
+print(mensagem)
+
+Exercício Python 30: Crie um programa que leia um número inteiro e mostre na tela se ele é PAR ou ÍMPAR.
+
+numero = int(input("Digite um número inteiro: "))
+
+if numero % 2 == 0:
+    print(f"O número {numero} é PAR.")
+else:
+    print(f"O número {numero} é ÍMPAR.")
+
+Exercício Python 31: Desenvolva um programa que pergunte a distância de uma viagem em Km.
+Calcule o preço da passagem, cobrando R$0,50 por Km para viagens de até 200Km e R$0,45 parta viagens mais longas.
+
+distancia = float(input("Digite a distância da viagem em Km: "))
+
+if distancia <= 200:
+    preco_passagem = distancia * 0.50
+else:
+    preco_passagem = distancia * 0.45
+
+print(f"O preço da passagem é R${preco_passagem:.2f}.")
+
+Exercício Python 32: Faça um programa que leia um ano qualquer e mostre se ele é bissexto.
+
+import calendar
+
+ano = int(input("Digite um ano: "))
+
+if calendar.isleap(ano):
+    print(f"O ano {ano} é bissexto.")
+else:
+    print(f"O ano {ano} não é bissexto.")
+
+ou esse
+
+ano = int(input("Digite um ano: "))
+
+if ano % 4 == 0 and (ano % 100 != 0 or ano % 400 == 0):
+    print(f"O ano {ano} é bissexto.")
+else:
+    print(f"O ano {ano} não é bissexto.")
+
+Exercício Python 33: Faça um programa que leia três números e mostre qual é o maior e qual é o menor.
+
+Exercício Python 34: Escreva um programa que pergunte o salário de um funcionário e calcule o valor do seu aumento.
+Para salários superiores a R$1250,00, calcule um aumento de 10%. Para os inferiores ou iguais, o aumento é de 15%.
+
+
+salario = float(input("Digite o salário do funcionário: "))
+
+if salario > 1250.00:
+    aumento = salario * 0.10
+else:
+    aumento = salario * 0.15
+
+novo_salario = salario + aumento
+
+print(f"O valor do aumento é: R${aumento:.2f}")
+print(f"O novo salário é: R${novo_salario:.2f}")
+
+
+Exercíc io Python 35: Desenvolva um programa que leia o comprimento de três retas e diga ao usuário se elas podem ou não
+formar um triângulo.
+
+lado1 = float(input("Digite o comprimento do primeiro lado: "))
+lado2 = float(input("Digite o comprimento do segundo lado: "))
+lado3 = float(input("Digite o comprimento do terceiro lado: "))
+
+if lado1 < lado2 + lado3 and lado2 < lado1 + lado3 and lado3 < lado1 + lado2:
+    print("É possível formar um triângulo com essas medidas.")
+else:
+    print("Não é possível formar um triângulo com essas medidas.")
