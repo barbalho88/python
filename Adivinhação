@@ -1,0 +1,26 @@
+import random
+
+numero_secreto = random.randint(1, 100)
+tentativas = 0
+acertou = False
+
+print("Bem-vindo ao Jogo da Adivinhação!")
+print("Tente adivinhar o número secreto de 1 a 100.")
+
+while not acertou:
+    tentativa = int(input("Digite um número: "))
+    tentativas += 1
+
+    if tentativa == numero_secreto:
+        acertou = True
+        print(f"Parabéns! Você acertou o número secreto em {tentativas} tentativas.")
+    elif tentativa < numero_secreto:
+        print("O número secreto é maior. Tente novamente.")
+    else:
+        print("O número secreto é menor. Tente novamente.")
+
+    if tentativas == 5:
+        print("Suas tentativas acabaram. O número secreto era:", numero_secreto)
+        break
+
+print("Fim do jogo!")
