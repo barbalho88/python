@@ -1,0 +1,112 @@
+import pygame
+import random
+
+# Configurações do jogo
+largura_tela = 640
+altura_tela = 480
+tamanho_bloco = 20
+
+# Cores
+cor_fundo = (0, 0, 0)
+cor_cobra = (0, 255, 0)
+cor_comida = (255, 0, 0)
+cor_pontuacao = (255, 255, 255)
+
+# Inicialização do Pygame
+pygame.init()
+tela = pygame.display.set_mode((largura_tela, altura_tela))
+pygame.display.set_caption("Snake Game")
+
+clock = pygame.time.Clock()
+
+# Função para desenhar a cobra na tela
+def desenhar_cobra(cobra):
+    for posicao in cobra:
+        pygame.draw.rect(tela, cor_cobra, (posicao[0], posicao[1], tamanho_bloco, tamanho_bloco))
+
+# Função para gerar uma nova posição para a comida
+def gerar_comida():
+    x = random.randint(0, largura_tela - tamanho_bloco) // tamanho_bloco * tamanho_bloco
+    y = random.randint(0, altura_tela - tamanho_bloco) // tamanho_bloco * tamanho_bloco
+    return x, y
+
+# Loop principal do jogo
+def jogo():
+    sair = False
+    fim_jogo = False
+    velocidade = 10
+
+    cobra = [(largura_tela // 2, altura_tela // 2)]
+    dx = 0
+    dy = 0
+
+    comida_x, comida_y = gerar_comida()
+    pontuacao = 0
+
+    while not sair:
+        while fim_jogo:
+            tela.fill(cor_fundo)
+            fonte = pygame.font.Font(None, 36)
+            texto = fonte.render(f"Fim de Jogo! Pontuação: {pontuacao}. Pressione R para jogar novamente ou Q para sair.", True, cor_cobra)
+            tela.blit(texto, (largura_tela // 2 - texto.get_width() // 2, altura_tela // 2 - texto.get_height() // 2))
+            pygame.display.flip()
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sair = True
+                    fim_jogo = False
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        sair = True
+                        fim_jogo = False
+                    elif event.key == pygame.K_r:
+                        jogo()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sair = True
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT and dx != tamanho_bloco:
+                    dx = -tamanho_bloco
+                    dy = 0
+                elif event.key == pygame.K_RIGHT and dx != -tamanho_bloco:
+                    dx = tamanho_bloco
+                    dy = 0
+                elif event.key == pygame.K_UP and dy != tamanho_bloco:
+                    dx = 0
+                    dy = -tamanho_bloco
+                elif event.key == pygame.K_DOWN and dy != -tamanho_bloco:
+                    dx = 0
+                    dy = tamanho_bloco
+
+        if not sair:
+            cobra[0] = (cobra[0][0] + dx, cobra[0][1] + dy)
+
+            if cobra[0][0] < 0 or cobra[0][0] >= largura_tela or cobra[0][1] < 0 or cobra[0][1] >= altura_tela:
+                fim_jogo = True
+
+            tela.fill(cor_fundo)
+            desenhar_cobra(cobra)
+            pygame.draw.rect(tela, cor_comida, (comida_x, comida_y, tamanho_bloco, tamanho_bloco))
+            
+            pontuacao_texto = f"Pontuação: {pontuacao}"
+            fonte_pontuacao = pygame.font.Font(None, 24)
+            texto_pontuacao = fonte_pontuacao.render(pontuacao_texto, True, cor_pontuacao)
+            tela.blit(texto_pontuacao, (10, 10))
+
+            pygame.display.update()
+
+            if cobra[0][0] == comida_x and cobra[0][1] == comida_y:
+                comida_x, comida_y = gerar_comida()
+                cobra.append((0, 0))  # Adicionar um novo segmento à cobra
+                pontuacao += 10
+
+            for i in range(len(cobra)-1, 0, -1):
+                cobra[i] = (cobra[i-1][0], cobra[i-1][1])
+
+            clock.tick(velocidade)
+
+    pygame.quit()
+
+# Iniciar o jogo
+jogo()
