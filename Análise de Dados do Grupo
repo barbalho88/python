@@ -1,0 +1,41 @@
+'''Crie um programa que leia a idade e o sexo de várias pessoas.
+A cada pessoa cadastrada, o programa deverá perguntar se o usuário quer ou não continuar. No final, mostre:
+
+A) quantas pessoas tem mais de 18 anos.
+B) quantos homens foram cadastrados.
+C) quantas mulheres tem menos de 20 anos.'''
+
+def main():
+    # Variáveis para contagem
+    pessoas_mais_dezoito_anos = 0
+    homens_cadastrados = 0
+    mulheres_menos_vinte_anos = 0
+
+    while True:
+        # Leitura dos dados da pessoa
+        idade = int(input("Digite a idade da pessoa: "))
+        sexo = input("Digite o sexo da pessoa (M/F): ").strip().upper()
+
+        # Verificação das informações
+        if idade > 18:
+            pessoas_mais_dezoito_anos += 1
+
+        if sexo == 'M':
+            homens_cadastrados += 1
+
+        if sexo == 'F' and idade < 20:
+            mulheres_menos_vinte_anos += 1
+
+        # Pergunta se deseja continuar cadastrando
+        continuar = input("Deseja continuar cadastrando? (S/N): ").strip().upper()
+
+        if continuar != 'S':
+            break
+
+    # Exibição dos resultados
+    print(f"\nA) Quantidade de pessoas com mais de 18 anos: {pessoas_mais_dezoito_anos}")
+    print(f"B) Quantidade de homens cadastrados: {homens_cadastrados}")
+    print(f"C) Quantidade de mulheres com menos de 20 anos: {mulheres_menos_vinte_anos}")
+
+if __name__ == "__main__":
+    main()
